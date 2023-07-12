@@ -8,18 +8,18 @@ on:
 jobs:
   test:
     name: Test YAML files
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+    
       - name: Show Working Directory
         run: |
           pwd
-          
+
       - name: Run Conftest
         run: |
-          for file in $(find /home/runner/work/conftest-demo/ -name '*.yml'); do
-            /usr/bin/conftest test $file  # Adjust the path to the 'conftest' binary if necessary
+          for file in $(find /conftest-demo -name '*.yml'); do
+            conftest test $file  # Use 'conftest' directly since it's available on the self-hosted runner
           done
