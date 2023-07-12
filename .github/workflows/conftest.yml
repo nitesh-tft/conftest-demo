@@ -14,21 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.x  # Adjust the Go version if necessary
-
-      - name: Install Conftest
-        run: go install github.com/open-policy-agent/conftest/cmd/conftest@latest  # Replace <version> with the desired Conftest version
-
-      - name: Find YAML files
-        id: find-files
-        run: |
-          echo "::set-output name=files::$(find nitesh-tft/conftest-demo -name '*.yml')"  # Adjust the path to your files
-
       - name: Run Conftest
         run: |
-          for file in ${{ steps.find-files.outputs.files }}; do
-            $HOME/go/bin/conftest test $file  # Assuming the Go binary directory is $HOME/go/bin
+          for file in $(find nitesh-tft/conftest-demo -name '*.yml'); do
+            /home/nitesh/Documents/conftest test $file  # Adjust the path to the 'conftest' binary if necessary
           done
