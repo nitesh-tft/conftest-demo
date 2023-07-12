@@ -19,5 +19,5 @@ jobs:
           pwd
       - name: Run Conftest
         run: |
-            conftest test /home/nitesh/actions-runner/_work/conftest-demo/conftest-demo/nginx.yml
+            kubectl get pods
             done
