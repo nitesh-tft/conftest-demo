@@ -17,8 +17,7 @@ jobs:
       - name: Show Working Directory
         run: |
           pwd
-
       - name: Run Conftest
         run: |
-            conftest test /home/nitesh/actions-runner/_work/conftest-demo/conftest-demo/nginx.yml   # Use 'conftest' directly since it's available on the self-hosted runner
-          done
+            conftest test /home/nitesh/actions-runner/_work/conftest-demo/conftest-demo/nginx.yml
+            done
