@@ -19,5 +19,7 @@ jobs:
           pwd
       - name: Run Conftest
         run: |
-            kubectl get pods
-            done
+          for file in $(find conftest-demo -name '*.yml'); do
+          conftest test "$file"
+          done
+
