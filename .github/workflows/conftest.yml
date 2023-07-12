@@ -20,6 +20,6 @@ jobs:
 
       - name: Run Conftest
         run: |
-          for file in $(find /conftest-demo -name '*.yml'); do
+          for file in $(find home/nitesh/actions-runner/_work/conftest-demo/conftest-demo -name '*.yml'); do
             conftest test $file  # Use 'conftest' directly since it's available on the self-hosted runner
           done
