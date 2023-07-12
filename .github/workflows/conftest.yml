@@ -20,6 +20,6 @@ jobs:
           
       - name: Run Conftest
         run: |
-          for file in $(find nitesh-tft/conftest-demo -name '*.yml'); do
+          for file in $(find /home/runner/work/conftest-demo/ -name '*.yml'); do
             /usr/bin/conftest test $file  # Adjust the path to the 'conftest' binary if necessary
           done
