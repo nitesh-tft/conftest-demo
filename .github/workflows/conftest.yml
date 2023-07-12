@@ -19,6 +19,7 @@ jobs:
           pwd
       - name: Run Conftest
         run: |
-          kubectl get pods
+          cd /home/nitesh/Documents/
+          conftest test nginxpass.yml
           done
 
