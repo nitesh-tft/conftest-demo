@@ -20,6 +20,5 @@ jobs:
 
       - name: Run Conftest
         run: |
-          for file in $(find home/nitesh/actions-runner/_work/conftest-demo/conftest-demo -name '*.yml'); do
-            conftest test $file  # Use 'conftest' directly since it's available on the self-hosted runner
+            conftest test /home/nitesh/actions-runner/_work/conftest-demo/conftest-demo/nginx.yml   # Use 'conftest' directly since it's available on the self-hosted runner
           done
