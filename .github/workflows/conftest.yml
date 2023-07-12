@@ -20,7 +20,7 @@ jobs:
           go-version: 1.x  # Adjust the Go version if necessary
 
       - name: Install Conftest
-        run: go install github.com/open-policy-agent/conftest/cmd/conftest@v0.42.1  # Replace <version> with the desired Conftest version
+        run: go install github.com/open-policy-agent/conftest/cmd/conftest@latest  # Replace <version> with the desired Conftest version
 
       - name: Find YAML files
         id: find-files
