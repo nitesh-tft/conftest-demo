@@ -14,8 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Show Working Directory
+        run: |
+          pwd
+          
       - name: Run Conftest
         run: |
           for file in $(find nitesh-tft/conftest-demo -name '*.yml'); do
-            /home/nitesh/Documents/conftest test $file  # Adjust the path to the 'conftest' binary if necessary
+            /usr/bin/conftest test $file  # Adjust the path to the 'conftest' binary if necessary
           done
