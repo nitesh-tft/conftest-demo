@@ -13,15 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-    
-      - name: Find YAML files
-        id: find-files
-        run: |
-          echo "::set-output name=files::$(find -name '*.yml')"
-          
-      - name: Print YAML file paths
-        run: |
-          echo "${{ steps.find-files.outputs.files }}"
           
       - name: Run Conftest and Deploy
         run: |
