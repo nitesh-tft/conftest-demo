@@ -8,22 +8,15 @@ on:
 jobs:
   test:
     name: Test YAML files
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-          
+
+      - name: Install conftest
+        uses: open-policy-agent/conftest-action@v1
+
       - name: Run Conftest and Deploy
         run: |
-          cd /home/nitesh/Documents
-          for file in $(find -name '*.yml'); do
-            if conftest test "$file"; then
-              kubectl apply -f "$file"
-            else
-              echo "Skipping deployment of $file as it failed Conftest tests"
-            fi
-            done
-          
-        
-
+          conftest test nginx.yml
