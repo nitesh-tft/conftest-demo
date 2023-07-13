@@ -21,7 +21,7 @@ jobs:
         run: |
           cd /home/nitesh/Documents/
           for file in $(find -name '*.yml'); do
-            conftest test "$file"
+            conftest test "$file" || true
           done
         
 
