@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Test YAML file
+    name: Test YAML files
     runs-on: self-hosted
 
     steps:
