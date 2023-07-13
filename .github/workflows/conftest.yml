@@ -3,7 +3,7 @@ name: Conftest Tests
 on:
   push:
     branches:
-      - main  # Adjust this branch name if necessary
+      - dev  # Adjust this branch name if necessary
 
 jobs:
   test:
@@ -37,9 +37,9 @@ jobs:
 
       - name: Run Conftest
         run: |
-          if conftest test nginxpass.yml; then
-            kubectl apply -f nginxpass.yml
+          if conftest test nginx-fail; then
+            kubectl apply -f nginx-fail.yml
           else
-            echo "Conftest failed for nginxpass.yml"
+            echo "Conftest failed for nginx-fail.yml"
             exit 1
           fi
