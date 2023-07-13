@@ -14,16 +14,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install kubectl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y kubectl
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: <your-aws-region>  # Replace with your AWS region
+
       - name: Install conftest
         run: |
           wget -O conftest.tar.gz https://github.com/open-policy-agent/conftest/releases/download/v0.42.1/conftest_0.42.1_Linux_x86_64.tar.gz
           tar -xzf conftest.tar.gz
           sudo mv conftest /usr/local/bin/
 
-      - name: Run Conftest and Deploy
+      - name: Run Conftest
         run: |
           if conftest test nginxpass.yml; then
-            kubectl apply -f nginxpass.yml
+            echo "Conftest passed for nginxpass.yml"
           else
-            echo "Skipping deployment as nginxpass.yml failed Conftest tests"
+            echo "Conftest failed for nginxpass.yml"
+            exit 1
           fi
