@@ -25,5 +25,5 @@ jobs:
           for file in $(find -name '*.yml'); do
             if conftest test nginxpass.yml; then
               kubectl apply -f nginxpass.yml
-            done
+          done
     
