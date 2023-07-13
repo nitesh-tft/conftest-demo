@@ -28,6 +28,6 @@ jobs:
             else
               echo "Skipping deployment of $file as it failed Conftest tests"
             fi
-          done
+          
         
 
