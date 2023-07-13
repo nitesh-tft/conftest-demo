@@ -38,7 +38,7 @@ jobs:
       - name: Run Conftest
         run: |
           ls -la
-          if conftest test nginx-fail; then
+          if conftest test nginx-fail.yml; then
             kubectl apply -f nginx-fail.yml
           else
             echo "Conftest failed for nginx-fail.yml"
