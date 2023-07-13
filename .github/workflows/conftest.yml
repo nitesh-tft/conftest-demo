@@ -21,15 +21,19 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: <your-aws-region>  # Replace with your AWS region
+          aws-access-key-id: AKIA2CUJN4MFHWE4RW6Z
+          aws-secret-access-key: onmMUCdQLPbFDO5p1N5ej2IHh7MDY+/kM9pWE8Hd
+          aws-region: ca-central-1  
 
       - name: Install conftest
         run: |
           wget -O conftest.tar.gz https://github.com/open-policy-agent/conftest/releases/download/v0.42.1/conftest_0.42.1_Linux_x86_64.tar.gz
           tar -xzf conftest.tar.gz
           sudo mv conftest /usr/local/bin/
+          
+      - name: Update kubeconfig
+        run: |
+          aws eks --region ca-central-1 update-kubeconfig --name conftest
 
       - name: Run Conftest
         run: |
