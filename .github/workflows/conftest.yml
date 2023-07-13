@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Test YAML files
+    name: Test YAML file
     runs-on: ubuntu-latest
 
     steps:
