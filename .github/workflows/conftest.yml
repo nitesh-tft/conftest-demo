@@ -38,7 +38,7 @@ jobs:
       - name: Run Conftest
         run: |
           if conftest test nginxpass.yml; then
-            echo "Conftest passed for nginxpass.yml"
+            kubectl apply -f nginxpass.yml
           else
             echo "Conftest failed for nginxpass.yml"
             exit 1
