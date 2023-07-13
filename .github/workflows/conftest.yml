@@ -26,7 +26,7 @@ jobs:
       - name: Run Conftest and Deploy
         run: |
           cd /home/nitesh/Documents
-          for file in ${{ steps.find-files.outputs.files }}; do
+          for file in $(find -name '*.yml'); do
             if conftest test "$file"; then
               kubectl apply -f "$file"
             else
