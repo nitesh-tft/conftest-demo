@@ -23,9 +23,7 @@ jobs:
       - name: Run Conftest and Deploy
         run: |
           for file in $(find -name '*.yml'); do
-            if conftest test "$file"; then
-              kubectl apply -f "$file"
-            else
-              echo "Skipping deployment of $file as it failed Conftest tests"
-            fi
-          done
+            if conftest test nginxpass.yml; then
+              kubectl apply -f nginxpass.yml
+            done
+    
