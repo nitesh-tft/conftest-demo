@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app
-  namespace: my-namespace
+  namespace: nginx
   labels:
     app: my-app
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: nginx:1.21.1
+          image: bitnami/nginx:1.21.3
           ports:
             - containerPort: 80
           securityContext:
