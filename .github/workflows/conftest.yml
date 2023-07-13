@@ -14,14 +14,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
     
-      - name: Show Working Directory
+      - name: Find YAML files
+        id: find-files
         run: |
-          pwd
-      - name: Run Conftest
+          echo "::set-output name=files::$(find -name '*.yml')"
+          
+      - name: Run Conftest and Deploy
         run: |
-          cd /home/nitesh/Documents/
-          for file in $(find -name '*.yml'); do
-            conftest test "$file" || true
+          for file in ${{ steps.find-files.outputs.files }}; do
+            if conftest test "$file"; then
+              kubectl apply -f "$file"
+            else
+              echo "Skipping deployment of $file as it failed Conftest tests"
+            fi
           done
         
 
