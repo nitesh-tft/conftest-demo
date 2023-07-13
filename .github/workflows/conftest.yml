@@ -20,6 +20,8 @@ jobs:
       - name: Run Conftest
         run: |
           cd /home/nitesh/Documents/
-          conftest test nginxpass.yml
+          for file in $(find -name '*.yml'); do
+            conftest test "$file"
+          done
         
 
