@@ -21,8 +21,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: AKIA2CUJN4MFHWE4RW6Z
-          aws-secret-access-key: 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
+          aws-access-key-id: 
+          aws-secret-access-key: 
           aws-region: ca-central-1  
 
       - name: Install conftest
